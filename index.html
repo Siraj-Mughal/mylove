@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Valentine's Day</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: #ffcccc;
+            text-align: center;
+            font-family: 'Arial', sans-serif;
+            overflow: hidden;
+            cursor: pointer;
+        }
+        .container {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        h1 {
+            color: #ff4d4d;
+            font-size: 3rem;
+            text-shadow: 0 0 15px rgba(255, 0, 0, 0.7);
+            animation: fadeIn 2s ease-in-out, glow 2s infinite alternate;
+        }
+        p {
+            font-size: 1.5rem;
+            color: #b30000;
+            animation: slideUp 2s ease-in-out, glow 2s infinite alternate;
+        }
+        .btn {
+            background: #ff4d4d;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            font-size: 1.2rem;
+            border-radius: 10px;
+            cursor: pointer;
+            margin-top: 20px;
+            animation: bounce 2s infinite, glow 2s infinite alternate;
+        }
+        .btn:hover {
+            background: #b30000;
+        }
+        .photo-frame {
+            margin-top: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+        }
+        .frame {
+            width: 150px;
+            height: 150px;
+            border: 5px solid #ff4d4d;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+        .frame:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 15px rgba(255, 0, 0, 0.7);
+        }
+        .frame:hover img {
+            transform: rotate(5deg);
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes slideUp {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        @keyframes glow {
+            0% { text-shadow: 0 0 10px rgba(255, 0, 0, 0.7); }
+            100% { text-shadow: 0 0 20px rgba(255, 0, 0, 1); }
+        }
+        .hearts {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            overflow: hidden;
+            pointer-events: none;
+        }
+        .heart {
+            position: absolute;
+            bottom: -10px;
+            width: 30px;
+            height: 30px;
+            background: red;
+            clip-path: polygon(50% 0%, 100% 35%, 80% 100%, 50% 75%, 20% 100%, 0% 35%);
+            opacity: 0.7;
+            animation: float 5s infinite linear;
+        }
+        @keyframes float {
+            from {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            to {
+                transform: translateY(-100vh);
+                opacity: 0;
+            }
+        }
+        /* Natural Elements */
+        .leaves {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            overflow: hidden;
+            pointer-events: none;
+        }
+        .leaf {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: url('https://via.placeholder.com/20x20/00ff00?text=Leaf') no-repeat center/cover;
+            animation: floatLeaf 10s infinite linear;
+        }
+        @keyframes floatLeaf {
+            from {
+                transform: translateY(0) rotate(0deg);
+                opacity: 1;
+            }
+            to {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        .flowers {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            overflow: hidden;
+            pointer-events: none;
+        }
+        .flower {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background: url('https://via.placeholder.com/30x30/ff00ff?text=Flower') no-repeat center/cover;
+            animation: floatFlower 8s infinite linear;
+        }
+        @keyframes floatFlower {
+            from {
+                transform: translateY(0) rotate(0deg);
+                opacity: 1;
+            }
+            to {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        .background-animation {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background: linear-gradient(45deg, #ffcccc, #ff9999, #ff6666);
+            animation: gradientShift 10s infinite alternate;
+        }
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 100% 50%; }
+        }
+        /* Sparkling Stars */
+        .stars {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            overflow: hidden;
+            pointer-events: none;
+        }
+        .star {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 2s infinite ease-in-out;
+        }
+        @keyframes twinkle {
+            0%, 100% { opacity: 0; }
+            50% { opacity: 1; }
+        }
+        /* Floating Balloons */
+        .balloons {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            overflow: hidden;
+            pointer-events: none;
+        }
+        .balloon {
+            position: absolute;
+            width: 50px;
+            height: 70px;
+            background: url('ballon(2).png') no-repeat center/cover;
+            animation: floatBalloon 10s infinite linear;
+        }
+        @keyframes floatBalloon {
+            from {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 1;
+            }
+            to {
+                transform: translateY(-100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        /* Confetti */
+        .confetti {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            overflow: hidden;
+            pointer-events: none;
+        }
+        .confetti-piece {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: #ff69b4;
+            clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+            animation: confettiFall 2s ease-out;
+        }
+        @keyframes confettiFall {
+            0% { transform: translateY(-100vh) rotate(0deg); }
+            100% { transform: translateY(100vh) rotate(360deg); }
+        }
+        /* Cursor Hearts */
+        .cursor-heart {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: red;
+            clip-path: polygon(50% 0%, 100% 35%, 80% 100%, 50% 75%, 20% 100%, 0% 35%);
+            pointer-events: none;
+            animation: cursorFloat 1s ease-out;
+        }
+        @keyframes cursorFloat {
+            0% { transform: scale(1); opacity: 1; }
+            100% { transform: scale(0); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <audio autoplay loop>
+        <source src="romantic-piano-254876.mp3" type="audio/mpeg">
+    </audio>
+    <div class="background-animation"></div>
+    <div class="hearts"></div>
+    <div class="leaves"></div>
+    <div class="flowers"></div>
+    <div class="stars"></div>
+    <div class="balloons"></div>
+    <div class="confetti"></div>
+    <div class="container">
+        <h1>Happy Valentine's Day, My Love!</h1>
+        <p id="love-message">You make my world brighter and my heart warmer. I love you! ❤</p>
+        <button class="btn" onclick="showSurprise()">Click for a Surprise!</button>
+        <div class="photo-frame">
+            <div class="frame"><img src="1.jpg" alt="Her Picture"></div>
+            <div class="frame"><img src="2.jpg" alt="Her Picture"></div>
+            <div class="frame"><img src="3.jpg" alt="Her Picture"></div>
+        </div>
+    </div>
+
+    <script>
+        function showSurprise() {
+            alert('You are my forever Valentine! ❤ My love, Every moment with you feels like a beautiful dream, a dream I never want to wake up from. Your smile lights up my world, and your presence fills my heart with a warmth I’ve never known. You are my forever, my everything. In your eyes, I see the stars ✨, in your voice, I hear the sweetest melody 🎶. With every heartbeat 💖, I fall deeper in love with you. No words can truly express how much you mean to me, but I hope you feel it every day in my actions and my love. ❤ I love you, my princess 👑. I love you, my princess 👑. I love you, my princess 👑. I love you, my princess 👑. I love you, my princess 👑. I love you, my princess 👑. I love you, my princess 👑. I love you, my princess 👑. I love you, my princess 👑. I love you, my princess 👑. 💕');
+            createFireworks();
+            createConfetti();
+        }
+
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            document.querySelector('.hearts').appendChild(heart);
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = Math.random() * 2 + 3 + 's';
+            setTimeout(() => heart.remove(), 5000);
+        }
+        setInterval(createHeart, 300);
+
+        function createLeaf() {
+            const leaf = document.createElement('div');
+            leaf.classList.add('leaf');
+            document.querySelector('.leaves').appendChild(leaf);
+            leaf.style.left = Math.random() * 100 + 'vw';
+            leaf.style.animationDuration = Math.random() * 5 + 5 + 's';
+            setTimeout(() => leaf.remove(), 10000);
+        }
+        setInterval(createLeaf, 500);
+
+        function createFlower() {
+            const flower = document.createElement('div');
+            flower.classList.add('flower');
+            document.querySelector('.flowers').appendChild(flower);
+            flower.style.left = Math.random() * 100 + 'vw';
+            flower.style.animationDuration = Math.random() * 5 + 5 + 's';
+            setTimeout(() => flower.remove(), 8000);
+        }
+        setInterval(createFlower, 700);
+
+        function createStar() {
+            const star = document.createElement('div');
+            star.classList.add('star');
+            document.querySelector('.stars').appendChild(star);
+            star.style.left = Math.random() * 100 + 'vw';
+            star.style.top = Math.random() * 100 + 'vh';
+            star.style.animationDuration = Math.random() * 2 + 1 + 's';
+            setTimeout(() => star.remove(), 3000);
+        }
+        setInterval(createStar, 200);
+
+        function createBalloon() {
+            const balloon = document.createElement('div');
+            balloon.classList.add('balloon');
+            document.querySelector('.balloons').appendChild(balloon);
+            balloon.style.left = Math.random() * 100 + 'vw';
+            balloon.style.animationDuration = Math.random() * 5 + 5 + 's';
+            setTimeout(() => balloon.remove(), 10000);
+        }
+        setInterval(createBalloon, 1000);
+
+        function createConfetti() {
+            for (let i = 0; i < 50; i++) {
+                const confetti = document.createElement('div');
+                confetti.classList.add('confetti-piece');
+                document.querySelector('.confetti').appendChild(confetti);
+                confetti.style.left = Math.random() * 100 + 'vw';
+                confetti.style.animationDuration = Math.random() * 2 + 1 + 's';
+                setTimeout(() => confetti.remove(), 2000);
+            }
+        }
+
+        function changeMessage() {
+            const messages = [
+                "You are my sunshine ☀",
+                "My heart beats only for you ❤",
+                "You are my dream come true 💖",
+                "Forever and always, I love you! 💞"
+            ];
+            const messageElement = document.getElementById("love-message");
+            setInterval(() => {
+                const randomIndex = Math.floor(Math.random() * messages.length);
+                messageElement.textContent = messages[randomIndex];
+            }, 3000);
+        }
+        changeMessage();
+
+        function createFireworks() {
+            for (let i = 0; i < 10; i++) {
+                setTimeout(() => {
+                    const firework = document.createElement("div");
+                    firework.classList.add("heart");
+                    firework.style.left = Math.random() * 100 + "vw";
+                    firework.style.bottom = "0";
+                    firework.style.animation = "float 1s ease-out";
+                    document.body.appendChild(firework);
+                    setTimeout(() => firework.remove(), 1000);
+                }, i * 200);
+            }
+        }
+
+        // Cursor Hearts
+        document.addEventListener('mousemove', (e) => {
+            const heart = document.createElement('div');
+            heart.classList.add('cursor-heart');
+            heart.style.left = e.pageX + 'px';
+            heart.style.top = e.pageY + 'px';
+            document.body.appendChild(heart);
+            setTimeout(() => heart.remove(), 1000);
+        });
+    </script>
+</body>
+</html>
